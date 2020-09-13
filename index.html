@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment section</title>
+
+    <style>
+        .paypalButton {
+            width: 125px;
+            padding-top: 20px;
+        }
+        .validate {
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <h3>Shipping Address</h3>
+        <label for="customerName">First and Last</label>
+        <input type="text" id="customerName" value="John Doe" /><br />
+        <label for="streetAddress">Street</label>
+        <input type="text" id="streetAddress" value="8987 W Test Street" /><br />
+        <label for="city">City</label>
+        <input type="text" id="city" value="Gilbert" /><br />
+        <label for="state">State</label>
+        <input type="text" id="state" value="AZ" /><br />
+        <label for="postalCode">Postal Code</label>
+        <input type="text" id="postalCode" value="85296" /><br />
+        <label for="countryCode">Country</label>
+        <input type="text" id="countryCode" value="US" /><br />
+        <input type="hidden" name="payment-option" value="paypal" checked>
+        <p id="validationStatus" class="validate"></p>
+
+        <!-- Packages for purchase -->
+        <p><b>Select your package: </b>
+            <select id="orderAmt">
+                <option value="19.99">Set of 50 masks - $19.99</option>
+                <option value="27.99">Set of 100 masks - $27.99</option>
+                <option value="64.99">Set of 250 masks - $64.99</option>
+            </select>
+        </p>
+
+        <input id="myBtn" type="button" onclick="validateAddress()" value="Continue"><br />
+    </div>
+
+    <!-- Set up a container element for the PayPal button -->
+    <div id="paypal-button-container" class="paypalButton"></div>
+    <p>Password: project1</p>
+
+    <!-- PayPal endpoint w/ API key and query parameters -->
+    <script src="https://www.paypal.com/sdk/js?client-id=sb&currency=USD"></script>
+
+    <!-- Jquery -->
+    <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+
+    <!-- Ajax -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script>
+        // Start of address validation function
+        function validateAddress() {
+            // addres-validator.net: https://www.address-validator.net/api.html
+            // Creating variables for customer details
+            var customerName = document.querySelector('#customerName').value;
+            var streetAddress = document.querySelector('#streetAddress').value;
+            var city = document.querySelector('#city').value;
+            var state = document.querySelector('#state').value;
+            var postalCode = document.querySelector('#postalCode').value;
+            var countryCode = document.querySelector('#countryCode').value;
+            //var apiKey = "av-219b5d3a55b7bab918373de09c364935";
+            var apiKey = "";
+            // Creating a variable to store the order amount
+            var orderAmt = parseFloat(document.querySelector('#orderAmt').value);
+            console.log("The order amount is: " + orderAmt);
+            var shipAmt = parseFloat(5.00);
+            console.log("The shipping amount is: " + shipAmt);
+            var orderTotal = orderAmt + shipAmt;
+            console.log("The order total is: " + orderTotal);
+
+            // Storing variable to local storage
+            localStorage.setItem("customerName", customerName);
+            localStorage.setItem("streetAddress", streetAddress);
+            localStorage.setItem("city", city);
+            localStorage.setItem("state", state);
+            localStorage.setItem("postalCode", postalCode);
+            localStorage.setItem("countryCode", countryCode);
+            localStorage.setItem("orderAmt", orderAmt);
+            localStorage.setItem("shipAmt", shipAmt);
+            localStorage.setItem("orderTotal", orderTotal);
+
+            // Shipping address API
+            fetch('https://api.address-validator.net/api/verify?StreetAddress=' + streetAddress +
+                '&City=' + city +
+                '&State=' + state +
+                '&PostalCode=' + postalCode +
+                '&CountryCode=' + countryCode +
+                '&APIKey=' + apiKey)
+                .then(function (response) {
+                    return response.json();
+                })
+                .then(function (data) {
+                    console.dir(data);
+                    console.log("Shipping address is: " + data.status);
+                    if (data.status === "VALID") {
+                        $("#validationStatus").attr("style", "background-color: #58ce7b").text("Valid address.");
+                    } else {
+                        $("#validationStatus").attr("style", "background-color: #fc665e").text("Invalid address. Please correct your shipping address or risk shipping to the wrong address!");
+                    };
+                })
+                .catch((error) => {
+                    console.error('Error:', error);
+                });
+        };
+        // End of address validation function
+
+        // Hide PayPal button until user clicks "continue"
+        $("#paypal-button-container").hide();
+
+        // Display PayPal button element after user clicks "continue"
+        $(document).ready(function () {
+            $("#myBtn").click(function () {
+                $("#paypal-button-container").show().delay(5000);
+            });
+        });
+
+        // PayPal create order API
+        paypal.Buttons({
+            style: {
+                color: 'blue',
+                shape: 'pill',
+                label: 'pay',
+                height: 40
+            },
+            createOrder: function (data, actions) {
+                return actions.order.create({
+                    application_context: {
+                        brand_name: 'Group Four',
+                    },
+                    purchase_units: [
+                        {
+                            amount: {
+                                currency_code: 'USD',
+                                value: localStorage.getItem("orderTotal"),
+                                breakdown: {
+                                    item_total: {
+                                        currency_code: 'USD',
+                                        value: localStorage.getItem("orderAmt")
+                                    },
+                                    shipping: {
+                                        currency_code: 'USD',
+                                        value: localStorage.getItem("shipAmt")
+                                    }
+                                }
+                            },
+                            items: [
+                                {
+                                    name: 'Face Masks',
+                                    description: 'High Quality Masks',
+                                    sku: 'sku01',
+                                    unit_amount: {
+                                        currency_code: 'USD',
+                                        value: localStorage.getItem("orderAmt")
+                                    },
+                                    quantity: '1',
+                                    category: 'PHYSICAL_GOODS'
+                                },
+                            ],
+                            shipping: {
+                                name: {
+                                    full_name: localStorage.getItem("customerName"),
+                                },
+                                address: {
+                                    address_line_1: localStorage.getItem("streetAddress"),
+                                    //address_line_2: data.addressline2,
+                                    admin_area_2: localStorage.getItem("city"),
+                                    admin_area_1: localStorage.getItem("state"),
+                                    postal_code: localStorage.getItem("postalCode"),
+                                    country_code: localStorage.getItem("countryCode")
+                                }
+                            }
+                        }
+                    ]
+                });
+            },
+            onApprove: function (data, actions) {
+                return actions.order.capture().then(function (details) {
+                    console.log('The payment was completed!');
+                    console.log("data of the transaction was ", data);
+                    console.log("actions of the transaction was ", actions);
+                    console.log("response of the transaction was ", details);
+                    alert('Thank you, ' + details.payer.name.given_name + ' ' + details.payer.name.surname + '!');
+                    alert('Email address: ' + details.payer.email_address);
+                    alert('Address: ' + details.payer.address.address_line_1 + '\n' + details.payer.address.address_line_2 + '\n' + details.payer.address.admin_area_2 + '\n' + details.payer.address.admin_area_1 + '\n' + details.payer.address.postal_code + '\n' + details.payer.address.country_code + '\n' + details.payer.phone.phone_number.national_number + '\n');
+                });
+            },
+            onCancel: function (data, actions) {
+                console.log('user cancelled-', data);
+            },
+            onError: function (data, actions) {
+                console.log('error occured-s', data);
+                var error = data;
+                alert(error);
+            }
+        }).render('#paypal-button-container');
+        //End of PayPal button
+    </script>
+</body>
+
+</html>
