@@ -93,10 +93,10 @@
             <label for="middle-label"> Number of Mask(s)
               <select>
                 <option value="disabled selected hidden">Select</option>
-                <option value="ten">10</option>
-                <option value="twenty-five">25</option>
-                <option value="fifty">50</option>
-                <option value="one-hundred">100</option>
+                <option value="ten">10 - $4.99</option>
+                <option value="twenty-five">25 - $9.99</option>
+                <option value="fifty">50 - $14.99</option>
+                <option value="one-hundred">100 - $19.99</option>
               </select>
             </label>
           </div>
@@ -172,7 +172,7 @@
               return actions.order.create({
                 purchase_units: [{
                   amount: {
-                    value: '0.01'
+                    value: '4.99'
                   }
                 }]
               });
