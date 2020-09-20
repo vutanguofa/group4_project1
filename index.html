@@ -157,16 +157,15 @@
           <p id="validationStatus" class="validate"></p>
           <input id="myBtn" class="button large expanded" type="button" onclick="validateAddress()"
             value="Continue"><br />
+          <!-- Set up a container element for the PayPal button -->
+          <div id="paypal-button-container" class="paypalButton">
+            <p>Please use these test credentials to log into PayPal.</p>
+            <p>Email: group4@paypal.com</p>
+            <p>Password: project1</p>
+          </div>
         </div>
-      </form>
     </div>
-    <!-- Set up a container element for the PayPal button -->
-    <div id="paypal-button-container" class="paypalButton">
-      <p>Please use these test credentials to log into PayPal.</p>
-      <p>Email: group4@paypal.com</p>
-      <p>Password: project1</p>
-    </div>
-
+    </form>
 
     <!-- PayPal endpoint w/ API key and query parameters -->
     <script src="https://www.paypal.com/sdk/js?client-id=sb&currency=USD"></script>
