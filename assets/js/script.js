@@ -42,6 +42,7 @@ function validateAddress() {
             return response.json();
         })
         .then(function (data) {
+            console.log(data);
             console.log("Shipping address is: " + data.status);
             if (data.status === "VALID") {
                 $("#validationStatus").attr("style", "background-color: #58ce7b").text("Valid address.");
