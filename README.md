@@ -4,7 +4,7 @@
 
 Germ Stoppers offers a single-page purchasing solution for customers looking to purchase high quality face masks to prevent the spread of Covid-19. Additionally, Germ Stoppers’ webpage provides a modular template for other companies with a single product focus.
 
-## APIs used for this project
+## APIs
 
 Address Validator API: This API was used to validate the shipping address during checkout. Before the PayPal payment options are presented, a valid shipping address is required. <br />
 PayPal Orders API: This API was used to process the order while including the selected quanity, amount, and facemask color.
