@@ -14,9 +14,9 @@
     <div class="top-bar-left">
       <ul class="menu">
         <li class="menu-text">Home</li>
-        <li><a href="">Vision</a></li>
-        <li><a href="">Products</a></li>
-        <li><a href="">Purchase Masks</a></li>
+        <li><a href="#confirmation">Vision</a></li>
+        <li><a href="#productSection">Products</a></li>
+        <li><a href="#checkoutForm">Purchase Masks</a></li>
       </ul>
     </div>
   </div>
@@ -31,7 +31,7 @@
 
   <!-- Vision -->
   <div class="row column text-center">
-    <div class="vision">
+    <div id="confirmation" class="vision">
       <h3>Our vision <small>what we strive for</small></h3>
       <img class="thumbnail" src="./assets/images/communitymasks.jpg">
       <p> Our vision is to create a safer, healthier, more comfortable everyday life. </br>
@@ -48,117 +48,118 @@
     </div>
 
     <!-- Cards with images -->
-    <div class="product">
-      <h3>One Product. <small>Three colors.</small>Thousands of Germs Stopped.</h3>
-    </div>
-    <div class="grid-container2">
-      <div class="grid-x grid-margin-x small-up-2 medium-up-3">
-        <div class="cell">
-          <div class="card">
-            <img src="./assets/images/black masks.jpg">
-            <div class="card-section">
-              <h4>Black Mask</h4>
-              <p></p>
+    <div id="productSection">
+      <div class="product">
+        <h3>One Product. <small>Three colors.</small>Thousands of Germs Stopped.</h3>
+      </div>
+      <div class="grid-container2">
+        <div class="grid-x grid-margin-x small-up-2 medium-up-3">
+          <div class="cell">
+            <div class="card">
+              <img src="./assets/images/black masks.jpg">
+              <div class="card-section">
+                <h4>Black Mask</h4>
+                <p></p>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="cell">
-          <div class="card">
-            <img src="./assets/images/bluemask.jpg">
-            <div class="card-section">
-              <h4>Blue Mask</h4>
-              <p></p>
+          <div class="cell">
+            <div class="card">
+              <img src="./assets/images/bluemask.jpg">
+              <div class="card-section">
+                <h4>Blue Mask</h4>
+                <p></p>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="cell">
-          <div class="card">
-            <img src="./assets/images/whitemask.jpg">
-            <div class="card-section">
-              <h4>White Mask</h4>
-              <p></p>
+          <div class="cell">
+            <div class="card">
+              <img src="./assets/images/whitemask.jpg">
+              <div class="card-section">
+                <h4>White Mask</h4>
+                <p></p>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-    <div class="checkout">
-      <h3>Checkout Menu <small>Buy your masks!</small></h3>
-    </div>
-    <form>
-      <!--Order Information-->
-      <div class="grid-container">
-        <div class="grid-x grid-padding-x">
-          <div class="medium-6 cell">
-            <label for="middle-label"> Number of Mask(s)
-              <select id="orderAmt">
-                <option value="disabled selected hidden">Select</option>
-                <option value="4.99">10 - $4.99</option>
-                <option value="9.99">25 - $9.99</option>
-                <option value="19.99">100 - $19.99</option>
-              </select>
-            </label>
-          </div>
-          <div class="medium-6 cell">
-            <label for="middle-label"> Color of Mask(s)
-              <select id="maskColor">
-                <option value="disabled selected hidden">Select</option>
-                <option value="Blue">Blue</option>
-                <option value="Black">Black</option>
-                <option value="White">White</option>
-                <option value="Variety">Variety</option>
-              </select>
-            </label>
-          </div>
-        </div>
-        <!--Shipping Address-->
-        <div class="grid-x grid-padding-x">
-          <div class="small-3 cell">
-            <label for="customerName" class="text-right middle">First and Last Name</label>
-          </div>
-          <div class="small-9 cell">
-            <input type="text" id="customerName" placeholder="First and Last Name">
-          </div>
-          <div class="small-3 cell">
-            <label for="streetAddress" class="text-right middle">Street Adress</label>
-          </div>
-          <div class="small-9 cell">
-            <input type="text" id="streetAddress" placeholder="Street Adress">
-          </div>
-          <div class="small-3 cell">
-            <label for="city" class="text-right middle">City</label>
-          </div>
-          <div class="small-9 cell">
-            <input type="text" id="city" placeholder="City">
-          </div>
-          <div class="small-3 cell">
-            <label for="state" class="text-right middle">State</label>
-          </div>
-          <div class="small-9 cell">
-            <input type="text" id="state" placeholder="State">
-          </div>
-          <div class="small-3 cell">
-            <label for="postalCode" class="text-right middle">Postal Code</label>
-          </div>
-          <div class="small-9 cell">
-            <input type="number" id="postalCode" placeholder="Postol Code">
-          </div>
-          <div class="small-3 cell">
-            <label for="countryCode" class="text-right middle">Country</label>
-          </div>
-          <div class="small-9 cell">
-            <select id="countryCode">
-              <option value="US">United States</option>
-           </select>
-          </div>
-          <input type="hidden" name="payment-option" value="paypal" checked>
-        </div>
-        <p id="validationStatus" class="validate"></p>
-        <input id="myBtn" class="button large expanded" type="button" onclick="validateAddress()"
-          value="Continue"><br />
+      <div id="checkoutMenu" class="checkout">
+        <h3>Checkout Menu <small>Buy your masks!</small></h3>
       </div>
-    </form>
-
+      <form>
+        <!--Order Information-->
+        <div id="checkoutForm" class="grid-container">
+          <div class="grid-x grid-padding-x">
+            <div class="medium-6 cell">
+              <label for="middle-label"> Number of Mask(s)
+                <select id="orderAmt">
+                  <option value="disabled selected hidden">Select</option>
+                  <option value="4.99">10 - $4.99</option>
+                  <option value="9.99">25 - $9.99</option>
+                  <option value="19.99">100 - $19.99</option>
+                </select>
+              </label>
+            </div>
+            <div class="medium-6 cell">
+              <label for="middle-label"> Color of Mask(s)
+                <select id="maskColor">
+                  <option value="disabled selected hidden">Select</option>
+                  <option value="Blue">Blue</option>
+                  <option value="Black">Black</option>
+                  <option value="White">White</option>
+                  <option value="Variety">Variety</option>
+                </select>
+              </label>
+            </div>
+          </div>
+          <!--Shipping Address-->
+          <div class="grid-x grid-padding-x">
+            <div class="small-3 cell">
+              <label for="customerName" class="text-right middle">First and Last Name</label>
+            </div>
+            <div class="small-9 cell">
+              <input type="text" id="customerName" placeholder="First and Last Name">
+            </div>
+            <div class="small-3 cell">
+              <label for="streetAddress" class="text-right middle">Street Adress</label>
+            </div>
+            <div class="small-9 cell">
+              <input type="text" id="streetAddress" placeholder="Street Adress">
+            </div>
+            <div class="small-3 cell">
+              <label for="city" class="text-right middle">City</label>
+            </div>
+            <div class="small-9 cell">
+              <input type="text" id="city" placeholder="City">
+            </div>
+            <div class="small-3 cell">
+              <label for="state" class="text-right middle">State</label>
+            </div>
+            <div class="small-9 cell">
+              <input type="text" id="state" placeholder="State">
+            </div>
+            <div class="small-3 cell">
+              <label for="postalCode" class="text-right middle">Postal Code</label>
+            </div>
+            <div class="small-9 cell">
+              <input type="number" id="postalCode" placeholder="Postol Code">
+            </div>
+            <div class="small-3 cell">
+              <label for="countryCode" class="text-right middle">Country</label>
+            </div>
+            <div class="small-9 cell">
+              <select id="countryCode">
+                <option value="US">United States</option>
+              </select>
+            </div>
+            <input type="hidden" name="payment-option" value="paypal" checked>
+          </div>
+          <p id="validationStatus" class="validate"></p>
+          <input id="myBtn" class="button large expanded" type="button" onclick="validateAddress()"
+            value="Continue"><br />
+        </div>
+      </form>
+    </div>
     <!-- Set up a container element for the PayPal button -->
     <div id="paypal-button-container" class="paypalButton">
       <p>Please use these test credentials to log into PayPal.</p>

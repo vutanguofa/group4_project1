@@ -1,6 +1,5 @@
 // Start of address validation function
 function validateAddress() {
-    // addres-validator.net: https://www.address-validator.net/api.html
     //var apiKey = "av-219b5d3a55b7bab918373de09c364935";
     var apiKey = "";
 
@@ -41,7 +40,7 @@ function validateAddress() {
             return response.json();
         })
         .then(function (data) {
-            console.dir(data);
+            console.log("Details from address validator API: " + data);
             console.log("Shipping address is: " + data.status);
             if (data.status === "VALID") {
                 $("#validationStatus").attr("style", "background-color: #58ce7b").text("Valid address.");
@@ -121,13 +120,11 @@ paypal.Buttons({
     },
     onApprove: function (data, actions) {
         return actions.order.capture().then(function (details) {
-            console.log('The payment was completed!');
-            console.log("data of the transaction was ", data);
-            console.log("actions of the transaction was ", actions);
-            console.log("response of the transaction was ", details);
-            alert('Thank you, ' + details.payer.name.given_name + ' ' + details.payer.name.surname + '!');
-            alert('Email address: ' + details.payer.email_address);
-            alert('Address: ' + details.payer.address.address_line_1 + '\n' + details.payer.address.address_line_2 + '\n' + details.payer.address.admin_area_2 + '\n' + details.payer.address.admin_area_1 + '\n' + details.payer.address.postal_code + '\n' + details.payer.address.country_code + '\n' + details.payer.phone.phone_number.national_number + '\n');
+            console.log("Details from PayPal API: ", details);
+            $("#productSection").hide();
+            //$("#checkoutMenu").hide();
+            $("#confirmation").text("Thank you for your order! Your package will arrive within 3 to 5 business days.");
+            $("#paypal-button-container").hide();
         });
     },
     onCancel: function (data, actions) {
