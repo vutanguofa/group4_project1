@@ -13,7 +13,7 @@ Germ Stoppers offers a single-page purchasing solution for customers looking to 
 
 ## Technologies Used
 
-[Foundation Framework](https://get.foundation/) <br />
+[Foundation Framework](https://get.foundation/): This framework was used to build and polish the UI design of our website. <br />
 [Address Validator API](https://www.address-validator.net/api.html): This API was used to validate the shipping address during checkout. Before the PayPal payment options are presented, a valid shipping address is required. <br />
 [PayPal Orders API](https://developer.paypal.com/docs/checkout/#): This API was used to process the order while including the checkout details.
 
