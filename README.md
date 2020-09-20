@@ -18,6 +18,8 @@ Germ Stoppers offers a single-page purchasing solution for customers looking to 
 
 ## Demo
 
+![Screen recording](https://www.awesomescreenshot.com/video/1041720?key=f8d94fe2954de01ff5001a8818b28f52)
+<br />
 ![Germ-Stoppers](https://user-images.githubusercontent.com/68674610/93415178-c76eec00-f857-11ea-9c33-00ad2f2409a7.png)
 
 ## Links
