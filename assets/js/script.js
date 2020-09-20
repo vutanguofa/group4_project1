@@ -142,15 +142,15 @@ paypal.Buttons({
 //End of PayPal button
 
 // Get local storage details for shipping address
-localStorage.getItem("customerName");
-console.log("This is: " + customerName);
-localStorage.getItem("streetAddress");
-console.log(streetAddress);
-localStorage.getItem("city");
-console.log(city);
-localStorage.getItem("state");
-console.log(state);
-localStorage.getItem("postalCode");
-console.log(postalCode);
-localStorage.getItem("countryCode");
-console.log(countryCode);
+// localStorage.getItem("customerName");
+// console.log("This is: " + customerName);
+// localStorage.getItem("streetAddress");
+// console.log(streetAddress);
+// localStorage.getItem("city");
+// console.log(city);
+// localStorage.getItem("state");
+// console.log(state);
+// localStorage.getItem("postalCode");
+// console.log(postalCode);
+// localStorage.getItem("countryCode");
+// console.log(countryCode);
