@@ -2,9 +2,9 @@
 
 ## Developers
 
-Joel Cisco
-Abel Estrada
-Alannah Sanchez
+Joel Cisco <br />
+Abel Estrada <br />
+Alannah Sanchez <br />
 Vu Tang
 
 ## Description
@@ -18,6 +18,6 @@ Germ Stoppers offers a single-page purchasing solution for customers looking to 
 
 ![Germ-Stoppers](https://user-images.githubusercontent.com/68674610/93415178-c76eec00-f857-11ea-9c33-00ad2f2409a7.png)
 
-## APIs
+## Links
 
 [Link to deployed application](https://vutanguofa.github.io/group4_project1/)
