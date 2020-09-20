@@ -2,8 +2,8 @@ checkCustomerName();
 
 // Start of address validation function
 function validateAddress() {
-    //var apiKey = "av-219b5d3a55b7bab918373de09c364935";
-    var apiKey = "";
+    var apiKey = "av-219b5d3a55b7bab918373de09c364935";
+    //var apiKey = "";
 
     // Declaing variables
     var customerNameField = document.querySelector('#customerName').value;
@@ -46,10 +46,10 @@ function validateAddress() {
             console.log("Shipping address is: " + data.status);
             if (data.status === "VALID") {
                 $("#validationStatus").attr("style", "background-color: #58ce7b").text("Valid address.");
-                //$("#paypal-button-container").show();
+                $("#paypal-button-container").show();
             } else {
                 $("#validationStatus").attr("style", "background-color: #fc665e").text("Invalid address. Please correct your shipping address.");
-                $("#paypal-button-container").show();
+                //$("#paypal-button-container").show();
             };
         })
         .catch((error) => {
