@@ -16,10 +16,13 @@ Germ Stoppers offers a single-page purchasing solution for customers looking to 
 [Address Validator API](https://www.address-validator.net/api.html): This API was used to validate the shipping address during checkout. Before the PayPal payment options are presented, a valid shipping address is required. <br />
 [PayPal Orders API](https://developer.paypal.com/docs/checkout/#): This API was used to process the order while including the checkout details.
 
-## Demo
+## Overview
+
+![Germ-Stoppers](https://user-images.githubusercontent.com/68674610/93415178-c76eec00-f857-11ea-9c33-00ad2f2409a7.png)
+
+## Demo Walkthrough
 
 [Screen recording](https://www.awesomescreenshot.com/video/1041720?key=f8d94fe2954de01ff5001a8818b28f52)<br />
-![Germ-Stoppers](https://user-images.githubusercontent.com/68674610/93415178-c76eec00-f857-11ea-9c33-00ad2f2409a7.png)
 
 ## Links
 
