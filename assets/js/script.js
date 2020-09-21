@@ -32,7 +32,7 @@ function validateAddress() {
     // End of local storage SET
 
     // Shipping address API
-    fetch('https://cors-anywhere.herokuapp.com/https://api.address-validator.net/api/verify?StreetAddress=' + streetAddress +
+    fetch('https://cors-anywhere.herokuapp.com/https://api.address-validator.net/api/verify?StreetAddress=' + streetAddressField +
         '&City=' + cityField +
         '&State=' + stateField +
         '&PostalCode=' + postalCodeField +
