@@ -11,13 +11,14 @@ function validateAddress() {
     var stateField = document.querySelector('#state').value;
     var postalCodeField = document.querySelector('#postalCode').value;
     var countryCodeField = document.querySelector('#countryCode').value;
-    // Creating a variable to store the order amount
+
+    // Creating a variable to store order details
     var orderAmt = parseFloat(document.querySelector('#orderAmt').value);
     var shipAmt = parseFloat(5.00);
     var orderTotal = orderAmt + shipAmt;
     var maskColor = document.querySelector('#maskColor').value;
 
-    // Storing variable to local storage
+    // Local storage SET
     localStorage.setItem("customerName1", customerNameField);
     localStorage.setItem("streetAddress1", streetAddressField);
     localStorage.setItem("city1", cityField);
@@ -28,7 +29,7 @@ function validateAddress() {
     localStorage.setItem("shipAmt1", shipAmt);
     localStorage.setItem("orderTotal1", orderTotal);
     localStorage.setItem("maskColor1", maskColor);
-    // End of local storage
+    // End of local storage SET
 
     // Shipping address API
     fetch('https://cors-anywhere.herokuapp.com/https://api.address-validator.net/api/verify?StreetAddress=' + streetAddress +
@@ -56,10 +57,9 @@ function validateAddress() {
 };
 // End of address validation function
 
+// PayPal create order API
 // Hide PayPal button until address validation is successful"
 $("#paypal-button-container").hide();
-
-// Start of PayPal create order API
 paypal.Buttons({
     style: {
         color: 'blue',
@@ -134,9 +134,9 @@ paypal.Buttons({
         alert(error);
     }
 }).render('#paypal-button-container');
-//End of PayPal button
+//End of PayPal API
 
-// // CustomerName Check
+// Function to initiate local storage GET
 function checkCustomerName() {
     var checkName = localStorage.getItem("customerName1");
     var checkStreet = localStorage.getItem("streetAddress1");
@@ -156,3 +156,4 @@ function checkCustomerName() {
         $("#countryCode").val(checkCountryCode);
     }
 };
+// End of function to initiate local storage GET
